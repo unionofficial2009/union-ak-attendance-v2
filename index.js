@@ -16,34 +16,18 @@ if(message.channel.type === "dm") return;
   
 let prefix = botconfig.prefix;
   
-  if(cmd === `${prefix}botinfo`){
-   
-  let bicon = bot.user.displayAvatarURL;
-  let botembed = new Discord.RichEmbed()
-  .setDescription("Bot Information")
-  .setColor("#15f153")
-  .setThumbnail(bicon)
-  .addField("Bot Name", bot.user.username);
-   
-  return message.channel.send(botembed);
-}
-  
-  if(!message.content.startsWith(prefix)) return;
-  if(cooldown.has(message.author.id)){
-    message.delete();
-  return message.reply("You have to wait 1 day.")
-  }
-  cooldown.add(message.author.id);
+  //if(!message.content.startsWith(prefix)) return;
 let messageArray = message.content.split(" ");
 let cmd = messageArray[0];
 let args =  messageArray.slice(1);
     
-    setTimeout(() => {
-      cooldown.delete(message.author.id)
-      }, cdseconds * 1000)
-
  if(cmd === `${prefix}present`){
     
+   if(cooldown.has(message.author.id)){
+    message.delete();
+  return message.reply("You have to wait 1 day.")
+  }
+  cooldown.add(message.author.id);
   let attendanceEmbed = new Discord.RichEmbed()
   .setDescription("Attendance")
   .setColor("#15f153")
@@ -56,8 +40,25 @@ let args =  messageArray.slice(1);
   
   message.delete().catch(O_o=>{});
   attendancechannel.send(attendanceEmbed);
+   
+   setTimeout(() => {
+      cooldown.delete(message.author.id)
+      }, cdseconds * 1000)
+
     
   }
+  
+  if(cmd === `${prefix}botinfo`){
+   
+  let bicon = bot.user.displayAvatarURL;
+  let botembed = new Discord.RichEmbed()
+  .setDescription("Bot Information")
+  .setColor("#15f153")
+  .setThumbnail(bicon)
+  .addField("Bot Name", bot.user.username);
+   
+  return message.channel.send(botembed);
+}
     
 });
 
