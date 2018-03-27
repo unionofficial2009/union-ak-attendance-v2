@@ -2,7 +2,7 @@ const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 let cooldown = new Set();
-let cdseconds = 86400;
+let cdseconds = 1;
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online!`);
