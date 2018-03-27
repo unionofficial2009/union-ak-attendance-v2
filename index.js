@@ -6,7 +6,7 @@ let cdseconds = 86400;
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online!`);
-  bot.user.setActivity("*present for Attendance", {type: "WATCHING"});
+  bot.user.setActivity("^present for Attendance", {type: "WATCHING"});
   
 });
 
@@ -15,6 +15,19 @@ if(message.author.bot) return;
 if(message.channel.type === "dm") return;
   
 let prefix = botconfig.prefix;
+  
+  if(cmd === `${prefix}botinfo`){
+   
+  let bicon = bot.user.displayAvatarURL;
+  let botembed = new Discord.RichEmbed()
+  .setDescription("Bot Information")
+  .setColor("#15f153")
+  .setThumbnail(bicon)
+  .addField("Bot Name", bot.user.username);
+   
+  return message.channel.send(botembed);
+}
+  
   if(!message.content.startsWith(prefix)) return;
   if(cooldown.has(message.author.id)){
     message.delete();
