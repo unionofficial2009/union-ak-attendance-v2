@@ -4,11 +4,11 @@ const bot = new Discord.Client();
 let cooldown = new Set();
 let cdseconds = 86400;
 
-bot.on("ready", async () => {
-  console.log(`${bot.user.username} is online!`);
-  bot.user.setActivity("^present for Attendance", {type: "WATCHING"});
+//bot.on("ready", async () => {
+  //console.log(`${bot.user.username} is online!`);
+  //bot.user.setActivity("^present for Attendance", {type: "WATCHING"});
   
-});
+//});
 
 bot.on("message", async message => {
 if(message.author.bot) return;
@@ -62,4 +62,4 @@ let args =  messageArray.slice(1);
     
 });
 
-bot.login(process.env.BOT_TOKEN);
+//bot.login(process.env.BOT_TOKEN);
