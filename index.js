@@ -4,11 +4,11 @@ const bot = new Discord.Client();
 let cooldown = new Set();
 let cdseconds = 86400;
 
-//bot.on("ready", async () => {
-  //console.log(`${bot.user.username} is online!`);
-  //bot.user.setActivity("^present for Attendance", {type: "WATCHING"});
+bot.on("ready", async () => {
+  console.log(`${bot.user.username} is online!`);
+  bot.user.setActivity("^present for Attendance", {type: "WATCHING"});
   
-//});
+});
 
 bot.on("message", async message => {
 if(message.author.bot) return;
@@ -16,7 +16,7 @@ if(message.channel.type === "dm") return;
   
 let prefix = botconfig.prefix;
   
-  //if(!message.content.startsWith(prefix)) return;
+  if(!message.content.startsWith(prefix)) return;
 let messageArray = message.content.split(" ");
 let cmd = messageArray[0];
 let args =  messageArray.slice(1);
@@ -62,4 +62,4 @@ let args =  messageArray.slice(1);
     
 });
 
-//bot.login(process.env.BOT_TOKEN);
+bot.login(process.env.BOT_TOKEN);
