@@ -34,7 +34,7 @@ let args =  messageArray.slice(1);
   .addField("Member Present", `${message.author}`)
   .addField("Time", message.createdAt)
   
-  let attendancechannel = message.guild.channels.find(`name`, "union-attendance");
+  let attendancechannel = message.guild.channels.find(`name`, "ak-attendance");
   if (!attendancechannel) return message.channel.send("Couldn't find attendance channel.");
   
   
