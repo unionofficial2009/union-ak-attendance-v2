@@ -22,8 +22,8 @@ let cmd = messageArray[0];
 let args =  messageArray.slice(1);
     
  if(cmd === `${prefix}present`){
-    let dnmemberRole = message.guild.roles.find("name", "DN - Member");
-   if(message.member.roles.has(dnmemberRole.id)) {
+    let akmemberRole = message.guild.roles.find("name", "AK - Member");
+   if(message.member.roles.has(akmemberRole.id)) {
    if(cooldown.has(message.author.id)){
     message.delete();
   return message.reply("You have to wait 1 day.")
