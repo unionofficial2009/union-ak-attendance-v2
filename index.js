@@ -42,7 +42,7 @@ let args =  messageArray.slice(1);
   message.delete().catch(O_o=>{});
   attendancechannel.send(attendanceEmbed);
       } else {
-     message.reply("You ****, you don't have the permission to use this command.");
+     message.reply("바보야, you don't have the permission to use this command.");
    }
    setTimeout(() => {
       cooldown.delete(message.author.id)
