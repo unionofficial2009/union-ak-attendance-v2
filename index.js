@@ -52,14 +52,17 @@ if (cmd === `${prefix}create`) {
      message.delete().catch(O_o=>{});
      attendancechannel.send(attendanceEmbed);
 	  
-     sql.get(`SELECT * FROM attendance`).then(usu => {
-	if (!usu) {
+     sql.get(`SELECT * FROM attendance`).then(atn => {
+      if (!atn) {
         message.reply(`insert`);
       } else {
         message.reply(`You already have attendance for today.`);
       }
-									       
-      });
+      
+    }).catch((err) => {
+      message.reply(`${err}`);
+      
+   });
 	  
   } else {
     message.reply(`you don't have the permission to use this command.`);    
