@@ -61,7 +61,7 @@ if (cmd === `${prefix}create`) {
 	attendancechannel.send(attendanceEmbed);								       
       } else {
         message.reply(`You already have attendance for today.`);
-	message.channel.send( `user:${atn.id} \n attendance_date:${atn.attendance_date}`);
+	message.channel.send( `user:${atn.id} \n attendance_date:${atn.attendance_date} \n attendance_time:${atn.attendance_time}`);
       }
       
     }).catch((err) => {
