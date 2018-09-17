@@ -55,11 +55,12 @@ if (cmd === `${prefix}create`) {
      let today_date = new Date().toLocaleDateString();
      let today_time = new Date().toLocaleTimeString();
 	  
-     sql.get(`SELECT * FROM attendance WHERE id ="${message.author.id}" and attendance_date ="${today_date}" and attendance_time ="${today_time}"`).then(atn => {
+     sql.get(`SELECT * FROM attendance WHERE id ="${message.author.id}"`).then(atn => {
       if (!atn) {
 	
         sql.run("INSERT INTO attendance (id, attendance_date,attendance_time) VALUES (?, ?, ?)", [message.author.id,today_date,today_time]);
-	attendancechannel.send(attendanceEmbed);								       
+	attendancechannel.send(attendanceEmbed);
+	
       } else {
         message.reply(`You already have attendance for today.`);
 	message.channel.send( `user:${atn.id} \n attendance_date:${atn.attendance_date} \n attendance_time:${atn.attendance_time}`);
