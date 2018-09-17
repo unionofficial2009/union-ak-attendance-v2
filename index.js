@@ -26,7 +26,7 @@ if (cmd === `${prefix}create`) {
    sql.run('CREATE TABLE IF NOT EXISTS attendance (id TEXT, attendance_date TEXT)').then(row => {  
      message.reply(`Table attendance Successfully Created.`);	 
    }).catch(() => {
-     message.reply(`${error}`);	   
+     message.reply(`error`);	   
    });	   
 } else if(cmd === `${prefix}present`){
 	
@@ -52,17 +52,14 @@ if (cmd === `${prefix}create`) {
      message.delete().catch(O_o=>{});
      attendancechannel.send(attendanceEmbed);
 	  
-      sql.get(`SELECT * FROM attendance`).then(row => {
-      if (!row) {
+     sql.get(`SELECT * FROM attendance`).then(usu => {
+	if (!usu) {
         message.reply(`insert`);
       } else {
-        
         message.reply(`You already have attendance for today.`);
       }
-      
-    }).catch(() => {
-      message.reply(`error`);	   
-   });	  
+									       
+      });
 	  
   } else {
     message.reply(`you don't have the permission to use this command.`);    
