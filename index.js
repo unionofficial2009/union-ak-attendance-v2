@@ -61,7 +61,7 @@ if (cmd === `${prefix}create`) {
       }
       
     }).catch(() => {
-      message.reply(`${error}`);	   
+      message.reply(`error`);	   
    });	  
 	  
   } else {
