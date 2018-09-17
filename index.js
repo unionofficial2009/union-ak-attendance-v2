@@ -34,12 +34,12 @@ let args =  messageArray.slice(1);
   let bicon = c_user.displayAvatarURL;  
      
   let attendanceEmbed = new Discord.RichEmbed()
-  .setDescription("Attendance")
+  .setDescription(`${message.author}`)
   .setColor("#15f153")
   .setThumbnail(bicon)
-  .addField("Member Present", `${message.author}`)
-  .addField("Time", message.createdAt)
+  .addField("Attendance", "Present")
   .setTimestamp()
+  .setFooter("UNION AK Attendance",bicon2);
   
   let attendancechannel = message.guild.channels.find(`name`, "ak-attendance");
   if (!attendancechannel) return message.channel.send("Couldn't find attendance channel.");
