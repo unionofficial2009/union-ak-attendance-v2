@@ -38,6 +38,7 @@ let args =  messageArray.slice(1);
   .setColor("#15f153")
   .setThumbnail(bicon)
   .addField("Member Present", `${message.author}`)
+  .addField("Time", message.createdAt)
   .setTimestamp()
   
   let attendancechannel = message.guild.channels.find(`name`, "ak-attendance");
