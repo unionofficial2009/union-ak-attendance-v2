@@ -52,7 +52,7 @@ if (cmd === `${prefix}create`) {
      message.delete().catch(O_o=>{});
      attendancechannel.send(attendanceEmbed);
 	  
-      sql.get(`SELECT * FROM attendance WHERE id ="${message.author.id}" and attendance_date ="${message.createdAt}"`).then(row => {
+      sql.get(`SELECT * FROM attendance`).then(row => {
       if (!row) {
         message.reply(`insert`);
       } else {
