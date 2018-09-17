@@ -42,7 +42,7 @@ let args =  messageArray.slice(1);
      if (!attendancechannel) return message.channel.send("Couldn't find attendance channel.");
      
    } else {
-    message.reply(`${message.author.username}, you don't have the permission to use this command.`);    
+    message.reply(`you don't have the permission to use this command.`);    
    }  
    
  }  
