@@ -31,7 +31,7 @@ let args =  messageArray.slice(1);
   cooldown.add(message.author.id);
      
   let c_user = message.author   
-  let bicon = c_user.user.displayAvatarURL;  
+  let bicon = c_user.displayAvatarURL;  
      
   let attendanceEmbed = new Discord.RichEmbed()
   .setDescription("Attendance")
