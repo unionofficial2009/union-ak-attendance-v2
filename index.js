@@ -24,6 +24,7 @@ let args =  messageArray.slice(1);
 	
 if (cmd === `${prefix}create`) {
    sql.run('CREATE TABLE IF NOT EXISTS attendance (id TEXT, attendance_date TEXT)').then(row => {  
+     message.reply(`Table attendance Successfully Created.`);	 
    }).catch(() => {
      message.reply(`${error}`);	   
    });	   
