@@ -54,10 +54,9 @@ if (cmd === `${prefix}create`) {
 	  
   else {
     message.reply(`you don't have the permission to use this command.`);    
-  } 	 
-	
-}	
-
+  } 	 	
+  }	
+ }
                                     
   
 });
