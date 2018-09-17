@@ -29,9 +29,14 @@ let args =  messageArray.slice(1);
   return message.reply("You have to wait 1 day.")
   }
   cooldown.add(message.author.id);
+     
+  let c_user = message.author   
+  let bicon = c_user.user.displayAvatarURL;  
+     
   let attendanceEmbed = new Discord.RichEmbed()
   .setDescription("Attendance")
   .setColor("#15f153")
+  .setThumbnail(bicon)
   .addField("Member Present", `${message.author}`)
   .addField("Time", message.createdAt)
   
