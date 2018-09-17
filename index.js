@@ -12,6 +12,8 @@ bot.on("ready", async () => {
 });
 
 bot.on("message", async message => {
+if (message.author.bot) return;
+if (message.channel.type !== "text") return;  
   
 let prefix = botconfig.prefix;
   
@@ -43,6 +45,21 @@ let args =  messageArray.slice(1);
      
      message.delete().catch(O_o=>{});
      attendancechannel.send(attendanceEmbed);
+     
+     sql.get(`SELECT * FROM attendance WHERE id ="${message.author.id}" and attendance_date ="${message.createdAt}"`).then(row => {
+      if (!row) {
+        sql.run("INSERT INTO attendance (id, attendance_date) VALUES (?, ?)", [message.author.id,message.createdAt);
+      } else {
+        
+        message.reply(`You already have attendance for today.`);
+      }
+      
+    }).catch(() => {
+      console.error;
+      sql.run("CREATE TABLE IF NOT EXISTS attendance (id INTEGER, attendance_date TEXT)").then(() => {
+      sql.run("INSERT INTO attendance (id, attendance_date) VALUES (?, ?)", [message.author.id,message.createdAt);
+      });
+   });
      
    } else {
     message.reply(`you don't have the permission to use this command.`);    
