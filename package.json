@@ -11,7 +11,8 @@
   "dependencies": {
     "discord.js": "^11.3.2",
     "snekfetch": "^3.6.4",
-    "superagent": "^3.8.2"
-    
+    "superagent": "^3.8.2",
+    "sqlite": "^2.9.1",
+    "sqlite3": "^3.1.13"  
   }
 }
