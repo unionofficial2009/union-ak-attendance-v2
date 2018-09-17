@@ -66,6 +66,22 @@ let args =  messageArray.slice(1);
    }  
    
  }  
+                                                                               
+  if(cmd === `${prefix}attendance`){
+	 
+   sql.get(`SELECT * FROM attendance`).then(row => {
+        if (!row) {
+        message.reply(`nil`);
+      } else {
+        
+        message.reply(`has rows`);
+      }
+      
+    }).catch(() => {
+       message.reply(`${console.error}`);
+   }); 
+	 
+ }	                                                                              
   
 });
 
