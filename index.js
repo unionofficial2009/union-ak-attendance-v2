@@ -52,11 +52,12 @@ if (cmd === `${prefix}create`) {
 	  
      message.delete().catch(O_o=>{});
      
+     let today_date = new Date().toLocaleDateString();
+     let today_time = new Date().toLocaleTimeString();
 	  
-     sql.get(`SELECT * FROM attendance`).then(atn => {
+     sql.get(`SELECT * FROM attendance WHERE id ="${message.author.id}" and attendance_date ="${today_date}" and attendance_time ="${today_time}"`).then(atn => {
       if (!atn) {
-	let today_date = new Date().toLocaleDateString();
-	let today_time = new Date().toLocaleTimeString();
+	
         sql.run("INSERT INTO attendance (id, attendance_date,attendance_time) VALUES (?, ?, ?)", [message.author.id,today_date,today_time]);
 	attendancechannel.send(attendanceEmbed);								       
       } else {
