@@ -32,6 +32,7 @@ let args =  messageArray.slice(1);
      
   let c_user = message.author   
   let bicon = c_user.displayAvatarURL;  
+  let bicon2 = bot.user.displayAvatarURL;    
      
   let attendanceEmbed = new Discord.RichEmbed()
   .setDescription(`${message.author}`)
