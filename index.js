@@ -24,7 +24,7 @@ let args =  messageArray.slice(1);
 	
 if (cmd === `${prefix}create`) {
    message.delete().catch(O_o=>{});
-   sql.run('CREATE TABLE IF NOT EXISTS attendance (id TEXT, attendance_date TEXT)').then(row => {  
+   sql.run('CREATE TABLE IF NOT EXISTS attendance (id TEXT, attendance_date,attendance_time)').then(row => {  
      message.reply(`Table attendance Successfully Created.`);	 
    }).catch((err) => {
      message.reply(`${err}`);	   
@@ -55,7 +55,7 @@ if (cmd === `${prefix}create`) {
 	  
      sql.get(`SELECT * FROM attendance`).then(atn => {
       if (!atn) {
-	let today = new Date();
+	let today = new Date().toLocaleDateString()
         sql.run("INSERT INTO attendance (id, attendance_date) VALUES (?, ?)", [message.author.id,today]);
 	attendancechannel.send(attendanceEmbed);								       
       } else {
