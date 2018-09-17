@@ -55,7 +55,8 @@ if (cmd === `${prefix}create`) {
 	  
      sql.get(`SELECT * FROM attendance`).then(atn => {
       if (!atn) {
-        sql.run("INSERT INTO attendance (id, attendance_date) VALUES (?, ?)", [message.author.id,message.createdAt]);
+	let today = new Date();
+        sql.run("INSERT INTO attendance (id, attendance_date) VALUES (?, ?)", [message.author.id,today]);
 	attendancechannel.send(attendanceEmbed);								       
       } else {
         message.reply(`You already have attendance for today.`);
