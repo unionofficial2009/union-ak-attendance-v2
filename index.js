@@ -51,11 +51,12 @@ if (cmd === `${prefix}create`) {
      if (!attendancechannel) return message.channel.send("Couldn't find attendance channel.");
 	  
      message.delete().catch(O_o=>{});
-     attendancechannel.send(attendanceEmbed);
+    
 	  
      sql.get(`SELECT * FROM attendance`).then(atn => {
       if (!atn) {
-        message.reply(`insert`);
+        sql.run("INSERT INTO attendance (id, attendance_date) VALUES (?, ?)", [message.author.id,message.createdAt);
+	attendancechannel.send(attendanceEmbed);								       
       } else {
         message.reply(`You already have attendance for today.`);
       }
