@@ -57,7 +57,7 @@ if (cmd === `${prefix}create`) {
       if (!atn) {
 	let today_date = new Date().toLocaleDateString();
 	let today_time = new Date().toLocaleTimeString();
-        sql.run("INSERT INTO attendance (id, attendance_date) VALUES (?, ?, ?)", [message.author.id,today_date,today_time]);
+        sql.run("INSERT INTO attendance (id, attendance_date,attendance_time) VALUES (?, ?, ?)", [message.author.id,today_date,today_time]);
 	attendancechannel.send(attendanceEmbed);								       
       } else {
         message.reply(`You already have attendance for today.`);
