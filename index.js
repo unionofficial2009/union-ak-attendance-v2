@@ -36,6 +36,7 @@ let args =  messageArray.slice(1);
      
   let attendanceEmbed = new Discord.RichEmbed()
   .setDescription(`${message.author}`)
+  .addField("Username", `${message.author.username}`)
   .setColor("#15f153")
   .setThumbnail(bicon)
   .addField("Attendance", "Present")
