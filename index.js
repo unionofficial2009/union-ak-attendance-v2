@@ -41,6 +41,9 @@ let args =  messageArray.slice(1);
      let attendancechannel = message.guild.channels.find(`name`, "ak-attendance");
      if (!attendancechannel) return message.channel.send("Couldn't find attendance channel.");
      
+     message.delete().catch(O_o=>{});
+     attendancechannel.send(attendanceEmbed);
+     
    } else {
     message.reply(`you don't have the permission to use this command.`);    
    }  
