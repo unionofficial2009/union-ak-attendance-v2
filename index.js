@@ -20,68 +20,16 @@ let prefix = botconfig.prefix;
 let messageArray = message.content.split(" ");
 let cmd = messageArray[0];
 let args =  messageArray.slice(1);  
+	
+	
+if (cmd === `${prefix}create`) {
+   sql.run('CREATE TABLE IF NOT EXISTS attendance (id TEXT, attendance_date TEXT)').then(row => {  
+   }).catch(() => {
+     message.reply(`${error}`);	   
+   });	   
+}	
 
- if(cmd === `${prefix}present`){
-   
-   let akmemberRole = message.guild.roles.find("name", "AK - Member");
-   
-   if(message.member.roles.has(akmemberRole.id)) {
-   
-    let c_user = message.author   
-    let bicon = c_user.displayAvatarURL;  
-    let bicon2 = bot.user.displayAvatarURL;
-   
-     let attendanceEmbed = new Discord.RichEmbed()
-    .setDescription(`${message.author}`)
-    .addField("Username", `${message.author.username}`)
-    .setColor("#15f153")
-    .setThumbnail(bicon)
-    .addField("Attendance", "Present")
-    .setTimestamp()
-    .setFooter("UNION AK Attendance",bicon2);
-     
-     let attendancechannel = message.guild.channels.find(`name`, "ak-attendance");
-     if (!attendancechannel) return message.channel.send("Couldn't find attendance channel.");
-     
-     message.delete().catch(O_o=>{});
-     attendancechannel.send(attendanceEmbed);
-     
-     sql.get(`SELECT * FROM attendance WHERE id ="${message.author.id}" and attendance_date ="${message.createdAt}"`).then(row => {
-      if (!row) {
-        sql.run("INSERT INTO attendance (id, attendance_date) VALUES (?, ?)", [message.author.id,message.createdAt);
-      } else {
-        
-        message.reply(`You already have attendance for today.`);
-      }
-      
-    }).catch(() => {
-      console.error;
-      sql.run("CREATE TABLE IF NOT EXISTS attendance (id INTEGER, attendance_date TEXT)").then(() => {
-      sql.run("INSERT INTO attendance (id, attendance_date) VALUES (?, ?)", [message.author.id,message.createdAt);
-      });
-   });
-     
-   } else {
-    message.reply(`you don't have the permission to use this command.`);    
-   }  
-   
- }  
-                                                                               
-  if(cmd === `${prefix}attendance`){
-	 
-   sql.get(`SELECT * FROM attendance`).then(row => {
-        if (!row) {
-        message.reply(`nil`);
-      } else {
-        
-        message.reply(`has rows`);
-      }
-      
-    }).catch(() => {
-       message.reply(`${console.error}`);
-   }); 
-	 
- }	                                                                              
+                                    
   
 });
 
