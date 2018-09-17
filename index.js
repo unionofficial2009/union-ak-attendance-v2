@@ -28,6 +28,34 @@ if (cmd === `${prefix}create`) {
    }).catch(() => {
      message.reply(`${error}`);	   
    });	   
+} else if(cmd === `${prefix}present`){
+	
+ let akmemberRole = message.guild.roles.find("name", "AK - Member");
+	
+  if(message.member.roles.has(akmemberRole.id)) {
+    let c_user = message.author   
+    let bicon = c_user.displayAvatarURL;  
+    let bicon2 = bot.user.displayAvatarURL;
+	  
+    let attendanceEmbed = new Discord.RichEmbed()
+    .setDescription(`${message.author}`)
+    .addField("Username", `${message.author.username}`)
+    .setColor("#15f153")
+    .setThumbnail(bicon)
+    .addField("Attendance", "Present")
+    .setTimestamp()
+    .setFooter("UNION AK Attendance",bicon2);
+	  
+     let attendancechannel = message.guild.channels.find(`name`, "ak-attendance");
+     if (!attendancechannel) return message.channel.send("Couldn't find attendance channel.");
+	  
+     message.delete().catch(O_o=>{});
+     attendancechannel.send(attendanceEmbed);
+	  
+  else {
+    message.reply(`you don't have the permission to use this command.`);    
+  } 	 
+	
 }	
 
                                     
