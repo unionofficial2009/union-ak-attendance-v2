@@ -72,11 +72,6 @@ let args =  messageArray.slice(1);
      
      if (myattendance > 0){
        
-        if(message.author.bot){
-          
-          message.reply("You already have attendance for today.")  
-             
-        } else {
           
          let romemberRole = message.guild.roles.find("name", "SD - Member"); 
        
@@ -85,39 +80,11 @@ let args =  messageArray.slice(1);
         } else {
           message.reply("You don't have the permission to use this command."); 
         }
-          
-          
-        }  
+                   
        
            
      }  else {
-       if(message.author.bot){
-         
-         
-      message.reply(`${greetings} ${message.author.username}  :tada::hugging: !`);
-     
-      let c_user = message.author   
-      let bicon = c_user.displayAvatarURL;   
-      let bicon2 = bot.user.displayAvatarURL; 
-     
-     let attendanceEmbed = new Discord.RichEmbed()
-     .setDescription(`${message.author}`)
-     .addField("Display Name", `${message.author.username}`)
-     .addField("Username", `${message.author.username}`)
-     .addField("Tag", `${message.author.tag}`)
-     .addField("ID", `${message.author.id}`)
-     .setColor("#15f153")
-     .setThumbnail(bicon)
-     .addField("Attendance", "Present")
-     .setTimestamp()
-     .setFooter("UNION SD Attendance",bicon2);
-     
-      let attendancechannel = message.guild.channels.find(`name`, "sd-attendance");
-      if (!attendancechannel) return message.channel.send("Couldn't find attendance channel.");
-      
-      attendancechannel.send(attendanceEmbed); 
-                  
-       } else {
+       
          
       let romemberRole = message.guild.roles.find("name", "SD - Member");  
       if(message.member.roles.has(romemberRole.id)) {
@@ -150,7 +117,7 @@ let args =  messageArray.slice(1);
           
       }           
          
-      }  
+        
        
      }  
        
