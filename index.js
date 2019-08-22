@@ -6,11 +6,20 @@ let cdseconds = 86400;
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online!`);
-  bot.user.setActivity(">present for Attendance", {type: "WATCHING"});
+  bot.user.setActivity("!present for Attendance", {type: "WATCHING"});
   
 });
 
 bot.on("message", async message => {
+  
+  
+if (message.channel.id == 546665178079690752) {
+   
+   if (message.attachments.size == 0) {
+      message.delete().catch(O_o=>{});
+  }
+   return;
+}  
 //if(message.author.bot) return;
 if(message.channel.type === "dm") return;
   
@@ -18,14 +27,14 @@ let prefix = botconfig.prefix;
   
 if(!message.content.startsWith(prefix)) return;
 let messageArray = message.content.split(" ");
-let cmd = messageArray[0];
+let cmd = messageArray[0].toLowerCase();
 let args =  messageArray.slice(1);
     
  if(cmd === `${prefix}present`){
    
-   if (message.channel.id != 540017296999972864 && message.author.id != 421634731709562886) {
+   if (message.channel.id != 614084659562676235 && message.author.id != 421634731709562886) {
      message.delete().catch(O_o=>{});
-     return message.reply("Invalid Channel! Please type **>present** here :arrow_right: <#540017296999972864>");
+     return message.reply("Invalid Channel! Please type **!present** here :arrow_right: <#614084881915576330>");
    } 
    
    let today = new Date();
@@ -42,7 +51,7 @@ let args =  messageArray.slice(1);
       greetings ='Good Evening';
    }
    
-   let attendancechannel = message.guild.channels.find(`name`, "sd-attendance");
+   let attendancechannel = message.guild.channels.find(`name`, "ls-attendance");
    if (!attendancechannel) return message.channel.send("Couldn't find attendance channel.");
    
    attendancechannel.fetchMessages({ limit: 100 })
@@ -72,21 +81,54 @@ let args =  messageArray.slice(1);
      
      if (myattendance > 0){
        
+        if(message.author.bot){
           
-         let romemberRole = message.guild.roles.find("name", "SD - Member"); 
+          message.reply("You already have attendance for today.")  
+             
+        } else {
+          
+         let romemberRole = message.guild.roles.find("name", "LS - Member"); 
        
         if(message.member.roles.has(romemberRole.id)) {
            message.reply("You already have attendance for today.")  
         } else {
           message.reply("You don't have the permission to use this command."); 
         }
-                   
+          
+          
+        }  
        
            
      }  else {
-       
+       if(message.author.bot){
          
-      let romemberRole = message.guild.roles.find("name", "SD - Member");  
+         
+      message.reply(`${greetings} ${message.author.username}  :tada::hugging: !`);
+     
+      let c_user = message.author   
+      let bicon = c_user.displayAvatarURL;   
+      let bicon2 = bot.user.displayAvatarURL; 
+     
+     let attendanceEmbed = new Discord.RichEmbed()
+     .setDescription(`${message.author}`)
+     .addField("Display Name", `${message.author.username}`)
+     .addField("Username", `${message.author.username}`)
+     .addField("Tag", `${message.author.tag}`)
+     .addField("ID", `${message.author.id}`)
+     .setColor("#15f153")
+     .setThumbnail(bicon)
+     .addField("Attendance", "Present")
+     .setTimestamp()
+     .setFooter("UNION LS Attendance",bicon2);
+     
+      let attendancechannel = message.guild.channels.find(`name`, "ls-attendance");
+      if (!attendancechannel) return message.channel.send("Couldn't find attendance channel.");
+      
+      attendancechannel.send(attendanceEmbed); 
+                  
+       } else {
+         
+      let romemberRole = message.guild.roles.find("name", "LS - Member");  
       if(message.member.roles.has(romemberRole.id)) {
       
       message.reply(`${greetings} ${message.member.displayName}  :tada::hugging: !`);  
@@ -105,9 +147,9 @@ let args =  messageArray.slice(1);
      .setThumbnail(bicon)
      .addField("Attendance", "Present")
      .setTimestamp()
-     .setFooter("UNION SD Attendance",bicon2);
+     .setFooter("UNION LS Attendance",bicon2);
      
-     let attendancechannel = message.guild.channels.find(`name`, "sd-attendance");
+     let attendancechannel = message.guild.channels.find(`name`, "ls-attendance");
      if (!attendancechannel) return message.channel.send("Couldn't find attendance channel.");   
         
      attendancechannel.send(attendanceEmbed);   
@@ -117,7 +159,7 @@ let args =  messageArray.slice(1);
           
       }           
          
-        
+      }  
        
      }  
        
