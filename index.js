@@ -105,7 +105,7 @@ let args =  messageArray.slice(1);
      .setThumbnail(bicon)
      .addField("Attendance", "Present")
      .setTimestamp()
-     .setFooter("UNION SD Attendance",bicon2);
+     .setFooter("UNION LS Attendance",bicon2);
      
      let attendancechannel = message.guild.channels.find(`name`, "ls-attendance");
      if (!attendancechannel) return message.channel.send("Couldn't find attendance channel.");   
